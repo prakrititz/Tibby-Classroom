@@ -4,6 +4,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from authlib.integrations.flask_client import OAuth
 import os
 from flask_login import current_user
+
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Replace with a real secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -134,6 +135,8 @@ def profile():
 @login_required
 def chat():
     return render_template('chat.html')
+
+
 
 if __name__ == '__main__':
     with app.app_context(): # This will drop all existing tables

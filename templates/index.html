@@ -156,6 +156,11 @@
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .testimonial img {
@@ -209,6 +214,15 @@
             margin-bottom: 10px;
         }
 
+        h3{
+            color:white;
+            text-decoration: none;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
     </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
@@ -218,12 +232,11 @@
     <nav>
         <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('friends') }}">Friends</a></li>
-            <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#testimonials">Our Team</a></li>
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('friends') }}">Friends</a></li>
+                <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
@@ -285,34 +298,33 @@
     
 
     <section class="section" id="testimonials">
-        <h2>What Our Users Say</h2>
+        <h2>Our Team</h2>
         <div class="testimonials">
             <div class="testimonial">
-                <img src="/api/placeholder/80/80" alt="User 1">
-                <h3>John Doe</h3>
-                <p>"Tibby makes learning so much fun! I love the quizzes and interactive lessons!"</p>
+                <a href="https://www.linkedin.com/in/prakrititz-borah-348b04287/">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQHVFI37hJTlnQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1725058821688?e=1732147200&v=beta&t=PP1hC3Qo6Hvqs0ti7Tv0uBhG7L8OfLE8SGN1XnlBas4" alt="User 1">
+                <h3>Prakrititz Borah</h3>
+                </a>
             </div>
             <div class="testimonial">
-                <img src="/api/placeholder/80/80" alt="User 2">
-                <h3>Jane Smith</h3>
-                <p>"I've learned so much more since using Tibby. The personalized content is amazing!"</p>
+                <a href="https://www.linkedin.com/in/sriram-srikanth-066376284/">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGyJZ3luADJjQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1726934910590?e=1732147200&v=beta&t=o4dcy-B0srenM4vp2yDDNju-GQh4Vh7zT2RSAv0J60k" alt="User 2">
+                <h3>Sriram Srikanth</h3>
+                </a>
             </div>
             <div class="testimonial">
-                <img src="/api/placeholder/80/80" alt="User 3">
-                <h3>Alex Johnson</h3>
-                <p>"Tibby helped me grasp complex topics in a fun and engaging way!"</p>
+                <a href="https://www.linkedin.com/in/unnath-chittimalla-08aaaa287/">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQH0L9vDwktFbQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1712130862037?e=1732147200&v=beta&t=czRlDeVh1pUlmrYmp5xyXnvJwh9kZTXQ60xGmozC0Kg" alt="User 3">
+                <h3>Unnath Chittimalla</h3>
+                </a>
+            </div>
+            <div class="testimonial">
+                <a href="https://www.linkedin.com/in/areen-patil-98679128b/">
+                <img src="https://res.cloudinary.com/teepublic/image/private/s--YuICndWD--/c_crop,x_10,y_10/c_fit,h_830/c_crop,g_north_west,h_1038,w_1038,x_-134,y_-96/l_upload:v1565806151:production:blanks:vdbwo35fw6qtflw9kezw/fl_layer_apply,g_north_west,x_-245,y_-207/b_rgb:ffffff/c_limit,f_auto,h_630,q_auto:good:420,w_630/v1689579937/production/designs/47962090_0.jpg" alt="User 4">
+                <h3>Areen Patil</h3>
+                </a>
             </div>
         </div>
-    </section>
-
-    <section class="section" id="contact">
-        <h2>Get in Touch</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
     </section>
 
     <footer>
