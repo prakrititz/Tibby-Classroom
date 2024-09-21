@@ -68,11 +68,12 @@
         }
 
         .ai-image {
-            width: 40%;
+            width: 60%;
             background-color: rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
+
             padding: 20px;
         }
 
@@ -83,7 +84,7 @@
         }
 
         .chat-interface {
-            width: 60%;
+            width: 40%;
             display: flex;
             flex-direction: column;
             padding: 20px;
@@ -99,10 +100,11 @@
         }
 
         .message {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             padding: 10px;
             border-radius: 5px;
             max-width: 80%;
+            font-size: 12px;
         }
 
         .user-message {
@@ -168,6 +170,22 @@
             align-items: center;
         }
 
+        .options{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .quiz-options{
+        margin: 10px;
+        padding: 4px 8px;
+        background-color: rgb(117, 152, 242);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -191,6 +209,15 @@
         </div>
         <div class="chat-interface">
             <div class="chat-messages">
+                <div class="message ai-message">
+                    Answer this question
+                </div>
+                <div class="options">
+                    <button class="quiz-options">Option A</button>
+                    <button class="quiz-options">Option B</button>
+                    <button class="quiz-options">OPtion C</button>
+                    <button class="quiz-options">Option D</button>
+                </div>
                 <div class="message ai-message">
                     Hello! I'm your AI mentor. How can I assist you today?
                 </div>
