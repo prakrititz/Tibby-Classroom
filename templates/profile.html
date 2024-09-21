@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - TibbyTeach</title>
+    <title>Profile - Tibby's Classroom</title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Tilt+Neon&display=swap");
+
+        :root {
+            --primary-bg: radial-gradient(circle, rgba(67, 69, 112, 1) 3%, rgba(35, 36, 57, 1) 60%);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --accent-color: rgb(117, 152, 242);
+            --text-color: #fff;
+            --text-muted: #ccc;
+        }
 
         * {
             padding: 0;
@@ -15,14 +23,9 @@
         }
 
         body {
-            background: rgb(67, 69, 112);
-            background: radial-gradient(
-                circle,
-                rgba(67, 69, 112, 1) 3%,
-                rgba(35, 36, 57, 1) 60%
-            );
-            color: #fff;
-            height: 100vh;
+            background: var(--primary-bg);
+            color: var(--text-color);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
@@ -38,7 +41,7 @@
         .logo {
             font-family: "Tilt Neon", sans-serif;
             font-size: 1.5rem;
-            color: #fff;
+            color: var(--text-color);
         }
 
         nav ul {
@@ -51,73 +54,91 @@
         }
 
         nav ul li a {
-            color: #fff;
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
-            color: rgb(117, 152, 242);
+            color: var(--accent-color);
         }
 
         .profile-container {
+            flex: 1;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            align-items: flex-start;
             padding: 40px;
         }
 
         .profile-card {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: var(--card-bg);
             padding: 40px;
             border-radius: 10px;
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
         }
 
-        .profile-card img {
+        .profile-header {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
             border: 4px solid rgba(117, 152, 242, 0.5);
+            margin-right: 30px;
         }
 
-        .profile-card h1 {
+        .profile-header-text h1 {
             font-size: 2rem;
             margin-bottom: 10px;
         }
 
-        .profile-card p {
+        .profile-header-text p {
             font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 20px;
+            color: var(--text-muted);
         }
 
-        .profile-details {
+        .profile-sidebar {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-main {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .points {
             font-size: 1.5rem;
-            margin-bottom: 20px;
             background-color: rgba(117, 152, 242, 0.3);
             padding: 10px 20px;
             border-radius: 5px;
+            text-align: center;
         }
 
-        .tags {
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .tags, .topics-completed .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 20px;
         }
 
         .tag {
@@ -127,8 +148,40 @@
             font-size: 1rem;
         }
 
-        .achievements, .friends {
-            margin-top: 20px;
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge-list img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(117, 152, 242, 0.5);
+        }
+
+        .achievements p {
+            margin-bottom: 10px;
+        }
+
+        .friends-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .friends-list li {
+            margin-bottom: 5px;
+        }
+
+        .friends-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .friends-list a:hover {
+            color: var(--accent-color);
         }
 
         footer {
@@ -137,54 +190,37 @@
             text-align: center;
             margin-top: auto;
         }
-        .topics-completed, .badges-earned {
-        margin-top: 20px;
-        width: 100%;
-    }
 
-    .badge-list {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-    }
+        @media (max-width: 768px) {
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
 
-    .badge-list img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: 2px solid rgba(117, 152, 242, 0.5);
-    }
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
 
-    .friends-list {
-        list-style-type: none;
-        padding: 0;
-        margin-top: 10px;
-    }
+            .profile-header img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
 
-    .friends-list li {
-        margin-bottom: 5px;
-    }
-
-    .friends-list a {
-        color: #fff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .friends-list a:hover {
-        color: rgb(117, 152, 242);
-    }
+            header {
+                padding: 20px;
+            }
+        }
     </style>
+    
 </head>
 <body>
     <header>
-        <div class="logo">TibbyTeach</div>
+        <div class="logo">Tibby's Classroom</div>
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('friends') }}">Friends</a></li>
-                <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
         </nav>
@@ -192,47 +228,18 @@
 
     <div class="profile-container">
         <div class="profile-card">
-            <img src="{{ user.picture or url_for('static', filename='default-profile.png') }}" alt="Profile Picture">
-            <h1>{{ user.name }}</h1>
-            <p>{{ user.bio }}</p>
+            <div class="profile-header">
+                <img src="{{ user.picture or url_for('static', filename='default-profile.png') }}" alt="Profile Picture">
+                <div class="profile-header-text">
+                    <h1>{{ user.name }}</h1>
+                    <p>{{ user.bio }}</p>
+                </div>
+            </div>
 
-            <div class="profile-details">
+            <div class="profile-sidebar">
                 <div class="points">Points: {{ user.points }}</div>
-
-                <div class="tags">
-                    Top tags:
-                    {% for tag in user.tags %}
-                        <span class="tag">{{ tag }}</span>
-                    {% endfor %}
-                </div>
-
-                <div class="topics-completed">
-                    <h2>Topics Completed</h2>
-                    <div class="tags">
-                        {% for topic in current_user.completed_topics %}
-                            <span class="tag">{{ topic }}</span>
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="badges-earned">
-                    <h2>Badges Earned</h2>
-                    <div class="badge-list">
-                        {% for badge in current_user.badges %}
-                            <img src="{{ badge.image_url }}" alt="{{ badge.name }} Badge" title="{{ badge.name }}">
-                        {% endfor %}
-                    </div>
-                </div>
-
-                <div class="achievements">
-                    <h2>Achievements</h2>
-                    {% for achievement in current_user.achievements %}
-                        <p>{{ achievement }}</p>
-                    {% endfor %}
-                </div>
-
                 <div class="friends">
-                    <h2>Friends</h2>
+                    <h2 class="section-title">Friends</h2>
                     <ul class="friends-list">
                         {% for friend in user.friends.limit(5).all() %}
                             <li><a href="{{ url_for('view_profile', user_id=friend.id) }}">{{ friend.name }}</a></li>
@@ -243,11 +250,47 @@
                     {% endif %}
                 </div>
             </div>
+
+            <div class="profile-main">
+                <div class="top-tags">
+                    <h2 class="section-title">Top Tags</h2>
+                    <div class="tags">
+                        {% for tag in user.tags %}
+                            <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="topics-completed">
+                    <h2 class="section-title">Topics Completed</h2>
+                    <div class="tags">
+                        {% for topic in current_user.completed_topics %}
+                            <span class="tag">{{ topic }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="badges-earned">
+                    <h2 class="section-title">Badges Earned</h2>
+                    <div class="badge-list">
+                        {% for badge in current_user.badges %}
+                            <img src="{{ badge.image_url }}" alt="{{ badge.name }} Badge" title="{{ badge.name }}">
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="achievements">
+                    <h2 class="section-title">Achievements</h2>
+                    {% for achievement in current_user.achievements %}
+                        <p>{{ achievement }}</p>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 TibbyTeach. All rights reserved.</p>
+        <p>&copy; 2024 Tibby's Classroom. All rights reserved.</p>
     </footer>
 </body>
 </html>
