@@ -281,8 +281,6 @@ function searchFriends() {
             const resultsDiv = document.getElementById('search-results');
             resultsDiv.innerHTML = '';
 
-            console.log(data);
-
             data.forEach(user => {
                 // Skip the current user
                 if (user.id != currentUserId) {
