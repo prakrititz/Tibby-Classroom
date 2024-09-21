@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends - TibbyTeach</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Tilt+Neon&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Nunito", sans-serif;
+        }
+
+        body {
+            background: rgb(67, 69, 112);
+            background: radial-gradient(
+                circle,
+                rgba(67, 69, 112, 1) 3%,
+                rgba(35, 36, 57, 1) 60%
+            );
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-family: "Tilt Neon", sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: rgb(117, 152, 242);
+        }
+
+        .friends-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .friend-card {
+            width: 30%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .friend-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .friend-info {
+            text-align: center;
+        }
+
+        .friend-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .friend-info p {
+            margin-bottom: 5px;
+            font-size: 1rem;
+            color: rgb(117, 152, 242);
+        }
+
+        .tags {
+            margin: 15px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: rgba(117, 152, 242, 0.3);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        #search-results {
+            margin-top: 20px;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .search-form {
+            display: flex;
+            width: 100%;
+            max-width: 500px;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+        .search-button {
+            padding: 10px 20px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-button:hover {
+            background-color: #3a7bc8;
+        }
+        #search-results {
+            margin-top: 20px;
+        }
+        #search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search-result-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.search-result-card:hover {
+    transform: translateY(-5px);
+}
+
+.search-result-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.search-result-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.search-result-card button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: rgb(117, 152, 242);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-result-card button:hover {
+    background-color: rgb(93, 121, 194);
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">TibbyTeach</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#benefits">Benefits</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#">Friends</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="search-container">
+        <form class="search-form" onsubmit="event.preventDefault(); searchFriends();">
+            <input type="text" id="friend-search" class="search-input" placeholder="Search for friends...">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <div id="search-results"></div>
+
+    <div class="friends-container">
+        {% for friend in friends %}
+        <div class="friend-card">
+            <img src="{{ friend.picture or url_for('static', filename='default-profile.png') }}" alt="{{ friend.name }}">
+            <div class="friend-info">
+                <h3><a href="{{ url_for('view_profile', user_id=friend.id) }}">{{ friend.name }}</a></h3>
+                <p>Points: {{ friend.points }}</p>
+            </div>
+            <div class="tags">
+                {% for tag in friend.tags[:3] %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>&copy; 2024 TibbyTeach. All rights reserved.</p>
+    </footer>
+    <script>
+        const currentUserId = {{ current_user.id }};
+    </script>
+    
+    <script>
+        
+function searchFriends() {
+    const query = document.getElementById('friend-search').value;
+    fetch(`/search_friends?query=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            const resultsDiv = document.getElementById('search-results');
+            resultsDiv.innerHTML = '';
+
+            data.forEach(user => {
+                // Skip the current user
+                if (user.id === currentUserId) {
+                    return;
+                }
+
+                const userDiv = document.createElement('div');
+                userDiv.className = 'search-result-card';
+                userDiv.innerHTML = `
+                    <img src="${user.picture || '/static/default-profile.png'}" alt="${user.name}">
+                    <h3>${user.name}</h3>
+                    <p>Points: ${user.points}</p>
+                    <button onclick="addFriend(${user.id})">Add Friend</button>
+                `;
+                resultsDiv.appendChild(userDiv);
+            });
+
+            if (resultsDiv.children.length === 0) {
+                resultsDiv.innerHTML = '<p>No results found.</p>';
+            }
+        });
+} 
+        function addFriend(friendId) {
+            fetch(`/add_friend/${friendId}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Friend added successfully!');
+                        location.reload();
+                    } else {
+                        alert('Failed to add friend.');
+                    }
+                });
+        }
+        </script>
+</body>
+</html>

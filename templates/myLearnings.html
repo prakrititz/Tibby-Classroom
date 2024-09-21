@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learnings - TibbyTeach</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Tilt+Neon&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Nunito", sans-serif;
+        }
+
+        body {
+            background: rgb(67, 69, 112);
+            background: radial-gradient(
+                circle,
+                rgba(67, 69, 112, 1) 3%,
+                rgba(35, 36, 57, 1) 60%
+            );
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-family: "Tilt Neon", sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: rgb(117, 152, 242);
+        }
+
+        .content-container {
+            flex: 1;
+            padding: 20px 80px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .section-content {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            display: none;
+        }
+
+        .section-content.show {
+            display: block;
+        }
+
+        .section-content ul {
+            list-style-type: none;
+        }
+
+        .section-content ul li {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-content ul li:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .toggle-icon {
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">TibbyTeach</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="friends.html">Friends</a></li>
+                <li><a href="#">My Learnings</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+        <!-- Previous Quiz Results Section -->
+        <div class="section">
+            <h2 onclick="toggleSection('quizResults')">Previous Quiz Results <span class="toggle-icon">+</span></h2>
+            <div id="quizResults" class="section-content">
+                <ul>
+                    <li>Quiz 1: 85%</li>
+                    <li>Quiz 2: 90%</li>
+                    <li>Quiz 3: 78%</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Completed Topics Section -->
+        <div class="section">
+            <h2 onclick="toggleSection('completedTopics')">Completed Topics <span class="toggle-icon">+</span></h2>
+            <div id="completedTopics" class="section-content">
+                <ul>
+                    <li>Introduction to AI</li>
+                    <li>Basics of Programming</li>
+                    <li>Data Structures and Algorithms</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Paused Topics Section -->
+        <div class="section">
+            <h2 onclick="toggleSection('pausedTopics')">Paused Topics <span class="toggle-icon">+</span></h2>
+            <div id="pausedTopics" class="section-content">
+                <ul>
+                    <li>Advanced Machine Learning</li>
+                    <li>Deep Dive into Web Development</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Additional Content Section -->
+        <div class="section">
+            <h2 onclick="toggleSection('additionalContent')">Uploaded References & Files <span class="toggle-icon">+</span></h2>
+            <div id="additionalContent" class="section-content">
+                <ul>
+                    <li>AI Research Paper.pdf</li>
+                    <li>Web Development Cheat Sheet.pdf</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TibbyTeach. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const icon = section.previousElementSibling.querySelector(".toggle-icon");
+
+            if (section.classList.contains("show")) {
+                section.classList.remove("show");
+                icon.textContent = "+";
+            } else {
+                section.classList.add("show");
+                icon.textContent = "-";
+            }
+        }
+    </script>
+</body>
+</html>

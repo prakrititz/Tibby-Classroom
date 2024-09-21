@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tibby's Classroom - AI Educational Platform</title>
+    <style>
+        /* Existing styles */
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Tilt+Neon&display=swap");
+
+        @property --gradient-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Nunito", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: rgb(67, 69, 112);
+            background: radial-gradient(
+                circle,
+                rgba(67, 69, 112, 1) 3%,
+                rgba(35, 36, 57, 1) 60%
+            );
+            color: #fff;
+        }
+
+        /* New styles for header and navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-family: "Tilt Neon", sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: rgb(117, 152, 242);
+        }
+
+        /* Styles for login/signup modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: rgba(67, 69, 112, 0.9);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .modal-content button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(117, 152, 242);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Existing and modified styles */
+        /* ... (include all the existing styles from the previous code) ... */
+
+        /* New styles for additional sections */
+        .section {
+            padding: 80px;
+        }
+
+        .section h2 {
+            font-family: "Tilt Neon", sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Testimonials section */
+        .testimonials {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .testimonial {
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        /* Contact section */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .contact-form button {
+            background-color: rgb(117, 152, 242);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .profile-section img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+    <header>
+    <div class="logo">Tibby's Classroom</div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('friends') }}">Friends</a></li>
+            <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+  </header>
+
+  <section class="home" id="home">
+    <div class="description">
+      <h1 class="title">
+        <span class="gradient-text">Grow Professionally</span> with Tibby
+      </h1>
+      <p class="paragraph">Say goodbye to boring lessons! Tibby's Classroom makes learning engaging and interactive, bringing educational content to life.</p>
+      {% if current_user.is_authenticated %}
+        <div class="profile-section">
+          <img src="{{ current_user.picture }}" alt="Profile Picture">
+          <h2>Welcome, {{ current_user.name }}!</h2>
+          <p>Email: {{ current_user.email }}</p>
+          <a href="{{ url_for('chat') }}" class="btn">Continue Learning</a>
+        </div>
+      {% else %}
+        <a href="{{ url_for('login') }}" class="btn">Get Started with Google</a>
+      {% endif %}
+    </div>
+
+
+      <div class="users-color-container">
+        <span class="item" style="--i: 1"></span>
+        <img
+          class="item"
+          src="{{ url_for('static', filename='images/tile000_nobg.png') }}"
+          style="--i: 2"
+          alt="" />
+        <span class="item" style="--i: 3"></span>
+        <img
+          class="item"
+          src="{{ url_for('static', filename='images/tile001_nobg.png') }}"
+          style="--i: 4"
+          alt="" />
+
+        <img
+          class="item"
+          src="{{ url_for('static', filename='images/tile002_nobg.png') }}"
+          style="--i: 10"
+          alt="" />
+        <span class="item" style="--i: 11"></span>
+        <img class="item" src="{{ url_for('static', filename='images/tile003_nobg.png') }}" style="--i: 12" alt="" />
+        <span class="item" style="--i: 5"></span>
+
+        <span class="item" style="--i: 9"></span>
+        <img class="item" src="{{ url_for('static', filename='images/tile004_nobg.png') }}" style="--i: 8" alt="" />
+        <span class="item" style="--i: 7"></span>
+        <img class="item" src="{{ url_for('static', filename='images/tile005_nobg.png') }}" style="--i: 6" alt="" />
+      </div>
+
+    </section>
+
+    
+
+    <section class="section" id="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <img src="/api/placeholder/80/80" alt="User 1">
+                <h3>John Doe</h3>
+                <p>"Tibby makes learning so much fun! I love the quizzes and interactive lessons!"</p>
+            </div>
+            <div class="testimonial">
+                <img src="/api/placeholder/80/80" alt="User 2">
+                <h3>Jane Smith</h3>
+                <p>"I've learned so much more since using Tibby. The personalized content is amazing!"</p>
+            </div>
+            <div class="testimonial">
+                <img src="/api/placeholder/80/80" alt="User 3">
+                <h3>Alex Johnson</h3>
+                <p>"Tibby helped me grasp complex topics in a fun and engaging way!"</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2>Get in Touch</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Tibby's Classroom. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sign Up</h2>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const loginModal = document.getElementById("loginModal");
+        const signupModal = document.getElementById("signupModal");
+        const loginBtn = document.getElementById("loginBtn");
+        const signupBtn = document.getElementById("signupBtn");
+        const closeBtns = document.getElementsByClassName("close");
+
+        loginBtn.onclick = () => loginModal.style.display = "block";
+        signupBtn.onclick = () => signupModal.style.display = "block";
+
+        for (let closeBtn of closeBtns) {
+            closeBtn.onclick = function() {
+                loginModal.style.display = "none";
+                signupModal.style.display = "none";
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = "none";
+            }
+            if (event.target == signupModal) {
+                signupModal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
