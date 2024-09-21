@@ -99,14 +99,14 @@ def my_learnings():
 @app.route('/friends')
 @login_required
 def friends():
-    return render_template('friends.html', friends=current_user.friends,user=current_user)
+    return render_template('friends.html',user=current_user)
 
 @app.route('/search_friends')
 @login_required
 def search_friends():
     query = request.args.get('query', '')
     users = User.query.filter(User.name.ilike(f'%{query}%')).all()
-    return jsonify([{'id': user.id, 'name': user.name, 'picture': user.picture} for user in users])
+    return jsonify([{'id': user.id, 'name': user.name, 'picture': user.picture,'points':user.points} for user in users])
 
 @app.route('/add_friend/<int:friend_id>', methods=['POST'])
 @login_required

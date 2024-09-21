@@ -105,7 +105,8 @@
         }
 
         .tags {
-            margin: 15px 0;
+            margin: 15px;
+            margin-bottom:10px;
         }
 
         .tag {
@@ -114,7 +115,7 @@
             padding: 5px 10px;
             border-radius: 15px;
             font-size: 0.9rem;
-            margin-right: 5px;
+            margin: 5px;
         }
 
         footer {
@@ -162,12 +163,12 @@
             margin-top: 20px;
         }
         #search-results {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-}
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
 .search-result-card {
     background-color: rgba(255, 255, 255, 0.1);
@@ -178,6 +179,11 @@
     align-items: center;
     width: 200px;
     transition: transform 0.3s ease;
+}
+
+a{
+    color: white;
+    text-decoration: none;
 }
 
 .search-result-card:hover {
@@ -226,17 +232,17 @@
     <header>
         <div class="logo">TibbyTeach</div>
         <nav>
-            <ul>
+            <ul class="nav-bar-box">
                 <li><a href="{{url_for('home')}}">Home</a></li>
                 <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
-                <li><a href="{{ url_for('profile') }}"><img src="{{ current_user.picture }}" alt="{{current_user.name}}" height="40"></a></li>
+                <li><a href="{{ url_for('profile') }}"><img src="{{ user.picture }}" alt="{{user.name}}" height="40"></a></li>
                 <li><a href="{{url_for('logout')}}">Logout</a></li>
             </ul>
         </nav>
     </header>
     <div class="search-container">
         <form class="search-form" onsubmit="event.preventDefault(); searchFriends();">
-            <input type="text" id="friend-search" class="search-input" placeholder="Search for friends...">
+            <input type="text" id="friend-search" class="search-input" placeholder="Search for friends..." name="search-input">
             <button type="submit" class="search-button">Search</button>
         </form>
     </div>
@@ -244,7 +250,7 @@
     <div id="search-results"></div>
 
     <div class="friends-container">
-        {% for friend in friends %}
+        {% for friend in user.friends %}
         <div class="friend-card">
             <img src="{{ friend.picture or url_for('static', filename='default-profile.png') }}" alt="{{ friend.name }}">
             <div class="friend-info">
@@ -263,11 +269,9 @@
         <p>&copy; 2024 TibbyTeach. All rights reserved.</p>
     </footer>
     <script>
-        const currentUserId = current_user.id;
+        const currentUserId = {{ current_user.id }};
     </script>
-    
     <script>
-        
 function searchFriends() {
     const query = document.getElementById('friend-search').value;
     fetch(`/search_friends?query=${query}`)
@@ -276,21 +280,22 @@ function searchFriends() {
             const resultsDiv = document.getElementById('search-results');
             resultsDiv.innerHTML = '';
 
+            console.log(data);
+
             data.forEach(user => {
                 // Skip the current user
-                if (user.id === currentUserId) {
-                    return;
+                if (user.id != currentUserId) {
+                    const userDiv = document.createElement('div');
+                    userDiv.className = 'search-result-card';
+                    userDiv.innerHTML = `
+                        <img src="${user.picture || '/static/default-profile.png'}" alt="${user.name}">
+                        <h3>${user.name}</h3>
+                        <p>Points: ${user.points}</p>
+                        <button onclick="addFriend(${user.id})">Add Friend</button>
+                    `;
+                    resultsDiv.appendChild(userDiv);
                 }
 
-                const userDiv = document.createElement('div');
-                userDiv.className = 'search-result-card';
-                userDiv.innerHTML = `
-                    <img src="${user.picture || '/static/default-profile.png'}" alt="${user.name}">
-                    <h3>${user.name}</h3>
-                    <p>Points: ${user.points}</p>
-                    <button onclick="addFriend(${user.id})">Add Friend</button>
-                `;
-                resultsDiv.appendChild(userDiv);
             });
 
             if (resultsDiv.children.length === 0) {

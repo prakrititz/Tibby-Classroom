@@ -227,10 +227,10 @@
     <header>
         <div class="logo">Tibby's Classroom</div>
         <nav>
-            <ul>
+            <ul class="nav-bar-box">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('friends') }}">Friends</a></li>
-                <li><a href="{{ url_for('profile') }}"><img src="{{ current_user.picture }}" alt="{{current_user.name}}"></a></li>
+                <li><a href="{{ url_for('profile') }}"><img src="{{ current_user.picture }}" alt="{{current_user.name}}" height="40"></a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
         </nav>
