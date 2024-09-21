@@ -218,7 +218,7 @@ a{
         color: white;
         text-decoration: none;
     }
-    nav.nav-bar-box{
+    .nav-bar-box{
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -226,6 +226,17 @@ a{
     }
     img{
         border-radius: 50%;
+    }
+
+    .remove-friend{
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: rgb(117, 152, 242);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
     }
     </style>
 </head>
@@ -263,6 +274,7 @@ a{
                 <span class="tag">{{ tag }}</span>
                 {% endfor %}
             </div>
+            <button class="remove-friend {{friend.id}}" onclick="removeFriend(this.classList[1])">Remove Friend</button>
         </div>
         {% endfor %}
     </div>
@@ -273,6 +285,15 @@ a{
         const currentUserId = {{ current_user.id }};
     </script>
     <script>
+
+function isAFriend(data){
+    for(var i=0;i<current_user.friends.size();i++){
+        if(current_user.friends[i].id==data.id){
+            return true;
+        }
+    }
+    return false;
+}
 function searchFriends() {
     const query = document.getElementById('friend-search').value;
     fetch(`/search_friends?query=${query}`)
@@ -311,6 +332,19 @@ function searchFriends() {
                         location.reload();
                     } else {
                         alert('Failed to add friend.');
+                    }
+                });
+        }
+
+        function removeFriend(friendId){
+            fetch(`/remove_friend/${friendId}`,{method:'POST'})
+                .then(response=>response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Friend removed successfully!');
+                        location.reload();
+                    } else {
+                        alert('Failed to remove friend.');
                     }
                 });
         }
