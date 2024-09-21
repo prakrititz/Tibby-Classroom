@@ -142,6 +142,15 @@
             padding: 10px;
             text-align: center;
         }
+
+        img{
+            border-radius: 50%;
+        }
+        .nav-bar-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -152,7 +161,7 @@
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('friends') }}">Friends</a></li>
                 <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
-                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('profile') }}"><img src="{{ current_user.picture }}" alt="{{current_user.name}}" height="40"></a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 <li><a href="#">AI Chat</a></li>
             </ul>

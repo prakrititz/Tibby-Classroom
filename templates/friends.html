@@ -14,6 +14,9 @@
             font-family: "Nunito", sans-serif;
         }
 
+        img{
+            border-radius: 50%;
+        }
         body {
             background: rgb(67, 69, 112);
             background: radial-gradient(
@@ -210,6 +213,12 @@
     background-color: rgb(93, 121, 194);
 }
 
+.nav-bar-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
     </style>
 </head>
@@ -220,7 +229,7 @@
             <ul>
                 <li><a href="{{url_for('home')}}">Home</a></li>
                 <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
-                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('profile') }}"><img src="{{ current_user.picture }}" alt="{{current_user.name}}" height="40"></a></li>
                 <li><a href="{{url_for('logout')}}">Logout</a></li>
             </ul>
         </nav>

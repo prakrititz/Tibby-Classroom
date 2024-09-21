@@ -94,12 +94,12 @@ def auth_google():
 @app.route('/my_learnings')#endpoints 
 @login_required
 def my_learnings():
-    return render_template('my_learnings.html')
+    return render_template('my_learnings.html',user=current_user)
 
 @app.route('/friends')
 @login_required
 def friends():
-    return render_template('friends.html', friends=current_user.friends)
+    return render_template('friends.html', friends=current_user.friends,user=current_user)
 
 @app.route('/search_friends')
 @login_required
@@ -134,7 +134,7 @@ def profile():
 @app.route('/chat')#endpoints 
 @login_required
 def chat():
-    return render_template('chat.html')
+    return render_template('chat.html',user=current_user)
 
 
 

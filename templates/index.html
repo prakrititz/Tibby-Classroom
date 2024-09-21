@@ -35,6 +35,9 @@
             color: #fff;
         }
 
+        img{
+            border-radius: 50%;
+        }
         /* New styles for header and navigation */
         header {
             display: flex;
@@ -223,6 +226,12 @@
             text-decoration: none;
         }
 
+        .nav-bar-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
@@ -230,13 +239,13 @@
     <header>
     <div class="logo">Tibby's Classroom</div>
     <nav>
-        <ul>
+        <ul class="nav-bar-box">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#testimonials">Our Team</a></li>
             {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('profile') }}">Profile</a></li>
                 <li><a href="{{ url_for('friends') }}">Friends</a></li>
                 <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
+                <li><a href="{{ url_for('profile') }}"><img src="{{ current_user.picture }}" alt="{{current_user.name}}" height="40"></a></li>
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
