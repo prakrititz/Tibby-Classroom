@@ -6,7 +6,6 @@
     <title>Friends - TibbyTeach</title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Tilt+Neon&display=swap");
-
         * {
             padding: 0;
             margin: 0;
@@ -14,9 +13,6 @@
             font-family: "Nunito", sans-serif;
         }
 
-        img{
-            border-radius: 50%;
-        }
         body {
             background: rgb(67, 69, 112);
             background: radial-gradient(
@@ -212,21 +208,26 @@
 .search-result-card button:hover {
     background-color: rgb(93, 121, 194);
 }
-
-.nav-bar-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
+    a{
+        color: white;
+        text-decoration: none;
+    }
+    nav.nav-bar-box{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    img{
+        border-radius: 50%;
+    }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">TibbyTeach</div>
         <nav>
-            <ul>
+            <ul class="nav-bar-box">
                 <li><a href="{{url_for('home')}}">Home</a></li>
                 <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
                 <li><a href="{{ url_for('profile') }}"><img src="{{ current_user.picture }}" alt="{{current_user.name}}" height="40"></a></li>
@@ -263,7 +264,7 @@
         <p>&copy; 2024 TibbyTeach. All rights reserved.</p>
     </footer>
     <script>
-        const currentUserId = current_user.id;
+        const currentUserId = {{ current_user.id }};
     </script>
     
     <script>
