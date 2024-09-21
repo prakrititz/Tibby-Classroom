@@ -71,9 +71,12 @@
             width: 60%;
             background-color: rgba(0, 0, 0, 0.3);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-end;
             align-items: center;
-
+            background-image: url(https://t3.ftcdn.net/jpg/06/84/59/22/360_F_684592278_xAceXmIN3m7d3AKj52NDAOuXaeRvEJVC.jpg) ;
+            background-repeat: no-repeat;
+            background-size: cover;
             padding: 20px;
         }
 
@@ -174,6 +177,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
+            margin-bottom: 10px;
         }
 
         .quiz-options{
@@ -185,6 +189,57 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        }
+
+        /* .mascot-dialog{
+            width: 100%;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            gap:-10px;
+        }
+
+
+        .dialog-box{
+            flex-grow: 1;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.4;
+            max-width: calc(100% - 120px);
+            min-height: 100px;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        } */
+        .mascot-dialog {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .dialog-box {
+            flex-grow: 1;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.4;
+            max-width: calc(100% - 120px);
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -205,7 +260,12 @@
 
     <div class="chat-container">
         <div class="ai-image">
-            <img src="/api/placeholder/400/600" alt="AI Mentor">
+            <dib class="mascot-dialog">
+                <img src="{{ url_for('static', filename='images/tile003_nobg.png') }}" alt="AI Mentor" height="160">
+                <div class="message ai-message dialog-box">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque, risus non facilisis ultrices, mi nibh varius massa, eu tempor sem libero nec elit. Nulla condimentum turpis quis dolor fermentum scelerisque. Morbi lacinia, velit at mattis congue, erat diam ullamcorper nulla, sit amet faucibus elit nunc a nulla. Praesent ac ornare nisl, quis venenatis dolor. Sed aliquet risus augue, ut placerat orci porttitor interdum. Pellentesque volutpat congue accumsan. Nulla erat enim, facilisis vitae faucibus quis, interdum eget ipsum. Mauris cursus porttitor efficitur. Maecenas sed lacus neque. Vivamus leo metus, semper sit amet sodales sit amet, rutrum eget eros. Nunc tincidunt enim tellus, at dictum tortor scelerisque eget. Pellentesque sed faucibus lacus. Suspendisse viverra, sapien quis aliquet pharetra, arcu tellus cursus mi, quis pretium nisl metus luctus loremggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg.
+                </div>
+            </dib>
         </div>
         <div class="chat-interface">
             <div class="chat-messages">
@@ -215,7 +275,7 @@
                 <div class="options">
                     <button class="quiz-options">Option A</button>
                     <button class="quiz-options">Option B</button>
-                    <button class="quiz-options">OPtion C</button>
+                    <button class="quiz-options">Option C</button>
                     <button class="quiz-options">Option D</button>
                 </div>
                 <div class="message ai-message">
@@ -249,7 +309,53 @@
     <footer>
         <p>&copy; 2024 Tibby's Classroom. All rights reserved.</p>
     </footer>
+    <script>
+        function adjustDialogBox() {
+            const dialogBox = document.querySelector('.dialog-box');
+            const mascotDialog = document.querySelector('.mascot-dialog');
+            const maxHeight = window.innerHeight * 0.7; // 70% of viewport height
+            const minFontSize = 8; // Minimum font size in pixels
+            let fontSize = 16;
+            
+            // Reset styles
+            dialogBox.style.maxHeight = 'none';
+            dialogBox.style.height = 'auto';
+            dialogBox.style.fontSize = `${fontSize}px`;
 
+            // Adjust font size and box height
+            while (dialogBox.scrollHeight > maxHeight && fontSize > minFontSize) {
+                fontSize--;
+                dialogBox.style.fontSize = `${fontSize}px`;;
+            }
+
+            if (dialogBox.scrollHeight > maxHeight) {
+                dialogBox.style.height = `${maxHeight}px`;
+                mascotDialog.style.alignItems = 'flex-start';
+            } else {
+                mascotDialog.style.alignItems = 'center';
+            }
+
+            // Ensure the dialog box doesn't exceed the mascot's height
+            const mascotHeight = mascotDialog.querySelector('img').offsetHeight;
+            if (dialogBox.offsetHeight > mascotHeight) {
+                dialogBox.style.height = `${mascotHeight}px`;
+            }
+        }
+
+        // Run on load and resize
+        window.addEventListener('load', adjustDialogBox);
+        window.addEventListener('resize', adjustDialogBox);
+
+        // Assuming you have a function that adds messages to the dialog box
+        function addMessage(message) {
+            const dialogBox = document.querySelector('.dialog-box');
+            dialogBox.textContent = message;
+            adjustDialogBox();
+        }
+
+        // Test with a large amount of text
+        addMessage("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque, risus non facilisis ultrices, mi nibh varius massa, eu tempor sem libero nec elit. Nulla condimentum turpis quis dolor fermentum scelerisque. Morbi lacinia, velit at mattis congue, erat diam ullamcorper nulla, sit amet faucibus elit nunc a nulla. Praesent ac ornare nisl, quis venenatis dolor. Sed aliquet risus augue, ut placerat orci porttitor interdum. Pellentesque volutpat congue accumsan. Nulla erat enim, facilisis vitae faucibus quis, interdum eget ipsum. Mauris cursus porttitor efficitur. Maecenas sed lacus neque. Vivamus leo metus, semper sit amet sodales sit amet, rutrum eget eros. Nunc tincidunt enim tellus, at dictum tortor scelerisque eget. Pellentesque sed faucibus lacus. Suspendisse viverra, sapien quis aliquet pharetra, arcu tellus cursus mi, quis pretium nisl metus luctus lorem.");
+    </script>
     <script>
         // Basic chat functionality
         const chatMessages = document.querySelector('.chat-messages');
