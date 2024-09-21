@@ -158,13 +158,23 @@
             text-align: center;
         }
 
+        img{
+            border-radius: 50%;
+        }
+
+        .nav-bar-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     </style>
 </head>
 <body>
     <header>
         <div class="logo">Tibby's Classroom</div>
         <nav>
-            <ul>
+            <ul class="nav-bar-box">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('friends') }}">Friends</a></li>
                 <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
