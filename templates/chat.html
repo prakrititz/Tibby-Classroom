@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Mentor Chat - TibbyTeach</title>
+    <title>Chat</title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Tilt+Neon&display=swap");
 
@@ -21,7 +21,7 @@
                 rgba(67, 69, 112, 1) 3%,
                 rgba(35, 36, 57, 1) 60%
             );                     
-                        color: #fff;
+            color: #fff;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -117,24 +117,39 @@
 
         .chat-input {
             display: flex;
+            align-items: center;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px;
         }
 
         .chat-input input {
             flex: 1;
             padding: 10px;
             border: none;
-            border-radius: 5px 0 0 5px;
+            border-radius: 5px;
             font-size: 1rem;
+            background-color: transparent;
+            color: #fff;
+            outline: none;
+        }
+
+        .chat-input img {
+            cursor: pointer;
+            height: 35px;
+            margin-left: 10px;
+            border-radius: 5px;
         }
 
         .chat-input button {
-            padding: 10px 20px;
+            padding: 10px 15px;
             background-color: rgb(117, 152, 242);
             color: #fff;
             border: none;
-            border-radius: 0 5px 5px 0;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 1rem;
+            margin-left: 10px;
         }
 
         footer {
@@ -143,21 +158,13 @@
             text-align: center;
         }
 
-        img{
-            border-radius: 50%;
-        }
-        .nav-bar-box{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">TibbyTeach</div>
+        <div class="logo">Tibby's Classroom</div>
         <nav>
-            <ul class="nav-bar-box">
+            <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('friends') }}">Friends</a></li>
                 <li><a href="{{ url_for('my_learnings') }}">My Learnings</a></li>
@@ -193,14 +200,17 @@
                 </div>
             </div>
             <div class="chat-input">
-                <input type="text" placeholder="Type your message here...">
+                <input type="text" placeholder="Ask Tibby...">
+                <img src="{{ url_for('static', filename='images/mindmap.png') }}" alt="Mindmap" title="Mindmap">
+                <img src="{{ url_for('static', filename='images/quiz.png') }}" alt="Quiz" title="Quiz">
+                <img src="{{ url_for('static', filename='images/reference.png') }}" alt="Reference" title="Reference">
                 <button>Send</button>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 TibbyTeach. All rights reserved.</p>
+        <p>&copy; 2024 Tibby's Classroom. All rights reserved.</p>
     </footer>
 
     <script>
