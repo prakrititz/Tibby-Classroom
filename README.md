@@ -40,15 +40,18 @@ Tibbys-Classroom/
 ```
 ## Installation
 Clone the repository:
-
+```bash
 git clone https://github.com/your-username/tibbys-classroom.git
 cd tibbys-classroom
+```
 Install the required dependencies:
-
+```bash
 pip install -r requirements.txt
+```
 Run the application:
-
+```bash
 python app.py
+```
 ## Tech Stack
 - **Python**: Core programming language
 - **Gen AI**: Used for generating summaries, mind maps, and quizzes
@@ -58,7 +61,14 @@ python app.py
 - Adding multilingual support to expand Tibby’s reach to different language learners.
 - Incorporating voice input/output to make Tibby more accessible.
 - Enhancing the quiz system with different types of questions (multiple choice, true/false, etc.).
-## Contribution
+
+## Team Memebers:
+1. Prakrititz Borah  Prakrititz.Borah@iiitb.ac.in
+2. Shriram Shrikanth  Shriram.Shrikanth@iiitb.ac.in
+3. Unnath Chittimala    Unnath.Chittimala@iiitb.ac.in
+4. Areen Patil  Areen.Patil@iiitb.ac.in
+
+## Contributions
 We welcome contributions! Feel free to fork the project and open a pull request for any improvements, bug fixes, or new features.
 
 ## License
