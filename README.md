@@ -38,7 +38,7 @@ Tibbys-Classroom/
 ├── README.md            # Project documentation (You are here!)
 └── requirements.txt     # Required dependencies
 ```
-##Installation
+## Installation
 Clone the repository:
 
 git clone https://github.com/your-username/tibbys-classroom.git
@@ -49,22 +49,22 @@ pip install -r requirements.txt
 Run the application:
 
 python app.py
-Tech Stack
-Python: Core programming language
-Gen AI: Used for generating summaries, mind maps, and quizzes
-Flask: Backend framework to power the chatbot interface
-HTML/CSS/JavaScript: For creating the front-end and making Tibby's Classroom interactive
-Future Enhancements
-Adding multilingual support to expand Tibby’s reach to different language learners.
-Incorporating voice input/output to make Tibby more accessible.
-Enhancing the quiz system with different types of questions (multiple choice, true/false, etc.).
-Contribution
+## Tech Stack
+- **Python**: Core programming language
+- **Gen AI**: Used for generating summaries, mind maps, and quizzes
+- **Flask**: Backend framework to power the chatbot interface
+- **HTML/CSS/JavaScript**: For creating the front-end and making Tibby's Classroom interactive
+## Future Enhancements
+- Adding multilingual support to expand Tibby’s reach to different language learners.
+- Incorporating voice input/output to make Tibby more accessible.
+- Enhancing the quiz system with different types of questions (multiple choice, true/false, etc.).
+## Contribution
 We welcome contributions! Feel free to fork the project and open a pull request for any improvements, bug fixes, or new features.
 
-##License
+## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-##Contact
+## Contact
 For any queries or feedback, please reach out via email at your-email@example.com.
 
 Thank you for exploring Tibby's Classroom! Let’s make learning fun and interactive! 🌟
