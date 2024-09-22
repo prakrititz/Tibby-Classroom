@@ -97,9 +97,12 @@
             flex: 1;
             overflow-y: auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             margin-bottom: 20px;
+        }
+
+        #quiz-container{
+            margin-bottom:20px;
         }
 
         .message {
@@ -190,7 +193,6 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
         }
-
         .mascot-dialog{
             width: 100%;
             display: flex;
@@ -224,7 +226,300 @@
             align-items: center;
         }
 
-    </style>
+        #lecture-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+#lecture-content h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+#lecture-content h2 {
+    color: #34495e;
+}
+
+.section {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+#navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#navigation button {
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#navigation button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none;
+}
+#quiz-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-botton:20px;
+}
+
+#quiz-container h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+#question-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#tibby-response {
+    margin-top: 20px;
+}
+
+#tibby-response .correct {
+    color: #2ecc71;
+}
+
+#tibby-response .incorrect {
+    color: #e74c3c;
+}
+
+#next-question {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quiz-option {
+    margin: 10px;
+    padding: 4px 8px;
+    background-color: rgb(117, 152, 242);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-option:hover {
+    background-color: #3498db;
+}
+
+.quiz-option.selected {
+    background-color: #2980b9;
+    font-weight: bold;
+}
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+#prev-btn,#next-btn,#close-summary{
+    margin: 10px;
+}
+
+#quiz-topic{
+    color:#fff;
+    font-weight:bold;
+}
+
+#submit-quiz{
+    margin: 10px;
+    padding: 4px 8px;
+    background-color: rgb(117, 152, 242);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.question-explanation{
+    margin-bottom:20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}  
+  
+  .spinner-text {
+    color: #FFFFFF;
+    text-align: center;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    position: relative;
+  }
+  
+  .spinner-text:after {
+    position: absolute;
+    content: "";
+    -webkit-animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
+    animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
+  }
+  
+  .loader {
+    margin: 5% auto 30px;
+  }
+  
+  .book {
+    border: 4px solid #FFFFFF;
+    width: 60px;
+    height: 45px;
+    position: relative;
+    perspective: 150px;
+  }
+  
+  .page {
+    display: block;
+    width: 30px;
+    height: 45px;
+    border: 4px solid #FFFFFF;
+    border-left: 1px solid #8455b2;
+    margin: 0;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    overflow: hidden;
+    background: #8455b2;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+  
+  .book .page:nth-child(1) {
+    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+  }
+  
+  .book .page:nth-child(2) {
+    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
+    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
+  }
+  
+  .book .page:nth-child(3) {
+    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+  }
+  
+  
+  /* Page turn */
+  
+  @-webkit-keyframes pageTurn {
+    0% {
+      -webkit-transform: rotateY( 0deg);
+      transform: rotateY( 0deg);
+    }
+    20% {
+      background: #4b1e77;
+    }
+    40% {
+      background: rebeccapurple;
+      -webkit-transform: rotateY( -180deg);
+      transform: rotateY( -180deg);
+    }
+    100% {
+      background: rebeccapurple;
+      -webkit-transform: rotateY( -180deg);
+      transform: rotateY( -180deg);
+    }
+  }
+  
+  @keyframes pageTurn {
+    0% {
+      transform: rotateY( 0deg);
+    }
+    20% {
+      background: #4b1e77;
+    }
+    40% {
+      background: rebeccapurple;
+      transform: rotateY( -180deg);
+    }
+    100% {
+      background: rebeccapurple;
+      transform: rotateY( -180deg);
+    }
+  }
+  
+  
+  /* Dots */
+  
+  @-webkit-keyframes Dots {
+    0% {
+      content: "";
+    }
+    33% {
+      content: ".";
+    }
+    66% {
+      content: "..";
+    }
+    100% {
+      content: "...";
+    }
+  }
+  
+  @keyframes Dots {
+    0% {
+      content: "";
+    }
+    33% {
+      content: ".";
+    }
+    66% {
+      content: "..";
+    }
+    100% {
+      content: "...";
+    }
+  }
+  .close {
+    cursor: pointer;
+}
+.modal-content .close {
+    cursor: pointer;
+}
+
+
+</style>
 </head>
 <body>
     <header>
@@ -243,87 +538,70 @@
 
     <div class="chat-container">
         <div class="ai-image">
+            <div id="lecture-content" class="hidden"></div>
             <div class="mascot-dialog">
-                <img src="{{ url_for('static', filename='images/tile003_nobg.png') }}" alt="AI Mentor" height="160">
-                <div class="message ai-message dialog-box">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellente.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque, risus non facilisis ultrices, mi nibh varius massa, eu tempor sem libero nec elit. Nulla condimentum turpis quis dolor fermentum scelerisque. Morbi lacinia, velit at mattis congue, erat diam ullamcorper nulla, sit amet faucibus elit nunc a nulla. Praesent ac ornare nisl, quis venenatis dolor. Sed aliquet risus augue, ut placerat orci porttitor interdum. Pellentesque volutpat congue accumsan. Nulla erat enim, facilisis vitae faucibus quis, interdum eget ipsum. Mauris cursus porttitor efficitur. Maecenas sed lacus neque. Vivamus leo metus, semper sit amet sodales sit amet, rutrum eget eros. Nunc tincidunt enim tellus, at dictum tortor scelerisque eget. Pellentesque sed faucibus lacus. Suspendisse viverra, sapien quis aliquet pharetra, arcu tellus cursus mi, quis pretium nisl metus luctus lorem.
+                <img src="{{ url_for('static', filename='images/tibby_happy.png') }}" alt="AI Mentor" height="280">
+                <div id="tibby-speech-bubble" class="message ai-message dialog-box">
+                    Welcome to the the classroom! I'm here to give you any Freindly Educational Content you want!! Questions!! And Solve Your Doubts!!
                 </div>
             </div>
         </div>
+        
         <div class="chat-interface">
             <div class="chat-messages">
-                <div class="message ai-message">
-                    Answer this question
-                </div>
-                <div class="options">
-                    <button class="quiz-options">Option A</button>
-                    <button class="quiz-options">Option B</button>
-                    <button class="quiz-options">Option C</button>
-                    <button class="quiz-options">Option D</button>
-                </div>
-                <div class="message ai-message">
-                    Hello! I'm your AI mentor. How can I assist you today?
-                </div>
-                <div class="message user-message">
-                    Hi! I'm looking for advice on improving my public speaking skills.
-                </div>
-                <div class="message ai-message">
-                    Great question! Improving public speaking skills is crucial for professional growth. Here are some tips to get you started:
-
-                    1. Practice regularly
-                    2. Record yourself and analyze your performance
-                    3. Join a public speaking club like Toastmasters
-                    4. Focus on body language and voice modulation
-                    5. Start with small audiences and gradually increase
-
-                    Would you like more detailed information on any of these points?
+                <div id="quiz-container" class="hidden">
+                    <h2 id="quiz-topic"></h2>
+                    <div id="questions"></div>
+                    <button id="submit-quiz" class="hidden">Submit Quiz</button>
+                    <div id="quiz-results" class="hidden">
+                        <h2 style="color:white">Quiz Results</h2>
+                        <p>Score: <span id="score"></span></p>
+                        <p>Percentage: <span id="percentage"></span>%</p>
+                    </div>
                 </div>
             </div>
             <div class="chat-input">
-                <input type="text" placeholder="Ask Tibby...">
+                <input type="text" id="chat-input" placeholder="Ask Tibby...">
+                <img src="{{ url_for('static', filename='images/quiz.png') }}" alt="Quiz" title="Generate Quiz" id="generate-quiz">
+                <img src="{{ url_for('static', filename='images/summary.png') }}" alt="Summary" title="Generate Summary" id="generate-summary">
                 <img src="{{ url_for('static', filename='images/mindmap.png') }}" alt="Mindmap" title="Mindmap">
-                <img src="{{ url_for('static', filename='images/quiz.png') }}" alt="Quiz" title="Quiz">
-                <img src="{{ url_for('static', filename='images/reference.png') }}" alt="Reference" title="Reference">
-                <button>Send</button>
+                <input type="file" id="pdf-upload" accept=".pdf" style="display: none;">
+                <img src="{{ url_for('static', filename='images/up.png') }}" alt="Reference" title="Reference" id="add-reference">
+                <img src="{{ url_for('static', filename='images/reference.png') }}" alt="Reference" title="View References" id="view-references">
+                <button id="send-message">Send</button>
+            </div>
+            <div id="loading-indicator" class="hidden">
+                <div class="spinner"></div>
+            </div>
+            
+        </div>
+        <div id="quiz-container" class="hidden">
+            <h2 id="quiz-topic"></h2>
+            <div id="question-container"></div>
+            <!--<div id="tibby-response"></div>-->
+            <button id="next-question" class="hidden">Next Question</button>
+        </div>
+        <div id="references-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Uploaded References</h2>
+                <ul id="pdf-list"></ul>
             </div>
         </div>
+        
     </div>
 
     <footer>
         <p>&copy; 2024 Tibby's Classroom. All rights reserved.</p>
     </footer>
-    <script>
-        // Basic chat functionality
-        const chatMessages = document.querySelector('.chat-messages');
-        const chatInput = document.querySelector('.chat-input input');
-        const sendButton = document.querySelector('.chat-input button');
 
-        function addMessage(message, isUser = true) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message');
-            messageDiv.classList.add(isUser ? 'user-message' : 'ai-message');
-            messageDiv.textContent = message;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
 
-        sendButton.addEventListener('click', () => {
-            const message = chatInput.value.trim();
-            if (message) {
-                addMessage(message);
-                chatInput.value = '';
-                // Simulate AI response (in a real app, this would be handled by your backend)
-                setTimeout(() => {
-                    addMessage("Thank you for your message. As an AI, I'm here to assist you with general advice, but for personalized mentorship, I recommend connecting with one of our human mentors.", false);
-                }, 1000);
-            }
-        });
-
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendButton.click();
-            }
-        });
     </script>
+    <script src="{{ url_for('static', filename='scripts/pdf_utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/summary.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/quiz.js') }}"></script>
+    
+
 </body>
 </html>
