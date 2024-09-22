@@ -1,4 +1,4 @@
-# Tibby's Classroom - Python + GEN AI Hackathon Submission
+7# Tibby's Classroom - Python + GEN AI Hackathon Submission
 ![Screenshot](screenshots/home_page.png)
 ## Introduction
 
@@ -13,7 +13,7 @@ Tibby's Classroom makes learning interactive and exciting by allowing students t
 - **Quiz Generation**: Based on the input topic, Tibby creates quizzes to test knowledge and reinforce learning.
 - ![Screenshot](screenshots/a.png)<br>
 - **User-Friendly Interaction**: Tibby’s friendly persona and changing expressions make the learning process more engaging.
-- **Gamification and Friends System**: Users can create accounts, track progress, and compete with friends on quizzes and topic mastery, similar to platforms like LeetCode. Progress tracking, leaderboards, and quiz scores foster a competitive learning environment that encourages engagement and collaboration.
+- **Gamification and Friends System**: Users can create accounts, track progress, and compete with friends on quizzes and topic mastery, similar to platforms like LeetCode. Progress trackingz,quiz scores that foster a competitive learning environment that encourages engagement and collaboration.
 - ![Screenshot](screenshots/friends.png)<br>
 
 
