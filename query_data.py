@@ -25,7 +25,7 @@ User message: {question}
 Your response:
 """
 
-together_api_key = "f79744841a9d211621a12f924b810dab2a71a48375b78a094372fb9ae3c9fbe6"
+together_api_key = "YOUR_API_KEY"
 model = None
 
 def query_rag(query_text: str, chat_id: str):

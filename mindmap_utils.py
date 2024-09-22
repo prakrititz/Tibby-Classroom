@@ -8,7 +8,7 @@ import textwrap
 import json
 import os
 
-together_api_key = "f79744841a9d211621a12f924b810dab2a71a48375b78a094372fb9ae3c9fbe6"
+together_api_key = "YOUR_API_KEY"
 
 def wrap_text(text, width=20):
     return '\n'.join(textwrap.wrap(text, width=width))

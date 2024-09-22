@@ -4,7 +4,6 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from authlib.integrations.flask_client import OAuth
 import os
 from flask_login import current_user
-from visual_novel_utils import create_interactive_quiz, QuizGenerator
 import uuid
 from new_summary import generate_visual_teaching, generate_background_images, save_teaching_to_json
 import uuid
@@ -222,8 +221,6 @@ def submit_quiz():
 @login_required
 def quiz():
     return render_template('quiz.html', user=current_user)
-####################################################################################
-###################################################################################
 @app.route('/upload_pdf', methods=['POST'])
 def upload_pdf():
     try:
@@ -259,20 +256,14 @@ def get_pdf_list():
 @app.route('/get_document/<filename>')
 def get_document(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
-########################################################################################
-########################################################
-##################################################
-###########################################33
+
 @app.route('/ragchat', methods=['POST'])
 def ragchat():
     message = request.json.get('message')
     chat_id = TEST_USER
     response, sources = query_rag(message, chat_id)
     return jsonify({'response': response, 'sources': sources})
-#######################################################
-##########################################################
-###############################################################
-##########################################################################################
+
 
 
 if __name__ == '__main__':
