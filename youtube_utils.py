@@ -10,7 +10,7 @@ from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 load_dotenv()
 
 # Get the YouTube API key from environment variables
-YOUTUBE_API_KEY = "AIzaSyBNXevtPCknFIPWCfelMuMlRSRv_WMY7ts"
+YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY"
 
 def get_video_info(video_id):
     """
