@@ -64,8 +64,8 @@ python app.py
 
 ## Team Memebers:
 1. Prakrititz Borah  Prakrititz.Borah@iiitb.ac.in
-2. Shriram Shrikanth  Shriram.Shrikanth@iiitb.ac.in
-3. Unnath Chittimala    Unnath.Chittimala@iiitb.ac.in
+2. Sriram Srikanth  Sriram.Srikanth@iiitb.ac.in
+3. Unnath Chittimalla    Unnath.Chittimalla@iiitb.ac.in
 4. Areen Patil  Areen.Patil@iiitb.ac.in
 
 ## Contributions
