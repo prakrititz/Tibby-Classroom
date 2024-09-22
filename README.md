@@ -75,7 +75,7 @@ We welcome contributions! Feel free to fork the project and open a pull request 
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ## Contact
-For any queries or feedback, please reach out via email at your-email@example.com.
+For any queries or feedback, please reach out via email to any of the team members.
 
 Thank you for exploring Tibby's Classroom! Let’s make learning fun and interactive! 🌟
 
