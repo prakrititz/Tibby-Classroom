@@ -1,5 +1,5 @@
 # Tibby's Classroom - Python + GEN AI Hackathon Submission
-
+![Screenshot](home_page.png)
 ## Introduction
 
 Welcome to **Tibby's Classroom**, a submission for the **Python + GEN AI Hackathon**! This project showcases the integration of a chatbot designed to enhance educational experiences by creating visual summaries, generating mind maps, quizzes, and summarizing PDFs based on user input.
