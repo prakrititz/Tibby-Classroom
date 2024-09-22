@@ -2,17 +2,18 @@
 ![Screenshot](home_page.png)
 ## Introduction
 
-Welcome to **Tibby's Classroom**, a submission for the **Python + GEN AI Hackathon**! This project showcases the integration of a chatbot designed to enhance educational experiences by creating visual summaries, generating mind maps, quizzes, and summarizing PDFs based on user input.
+Welcome to Tibby's Classroom, a submission for the Python + GEN AI Hackathon! This project showcases the integration of a chatbot designed to enhance educational experiences by creating visual summaries, generating mind maps, quizzes, and summarizing PDFs based on user input.
 
-**Tibby's Classroom** makes learning interactive and exciting by allowing students to engage with content through visual summaries, mind maps, and quizzes. The chatbot, Tibby, also adapts its expressions based on the images in the visual summaries, making the experience more dynamic and personalized.
-
+Tibby's Classroom makes learning interactive and exciting by allowing students to engage with content through visual summaries, mind maps, and quizzes. The chatbot, Tibby, also adapts its expressions based on the images in the visual summaries, making the experience more dynamic and personalized.
 ## Features
 
 - **Visual Summaries**: Enter a topic, and Tibby generates a visual summary complete with images. Tibby also adapts its expressions based on the image content to create a more engaging interaction.
+  
 - **PDF Summarization**: Upload a PDF file, and Tibby will extract key points and create concise summaries.
 - **Quiz Generation**: Based on the input topic, Tibby creates quizzes to test knowledge and reinforce learning.
 - **User-Friendly Interaction**: Tibby’s friendly persona and changing expressions make the learning process more engaging.
-
+- **Gamification and Friends System**: Users can create accounts, track progress, and compete with friends on quizzes and topic mastery, similar to platforms like LeetCode. Progress tracking, leaderboards, and quiz scores foster a competitive learning environment that encourages engagement and collaboration.
+![Screenshot](Classroom.png)
 ## How Tibby Works
 
 1. **Input**: The user provides a topic or uploads a PDF file.
@@ -60,6 +61,10 @@ python app.py
 - Adding multilingual support to expand Tibby’s reach to different language learners.
 - Incorporating voice input/output to make Tibby more accessible.
 - Enhancing the quiz system with different types of questions (multiple choice, true/false, etc.).
+- AI-Powered Recommendations: Introducing personalized learning paths based on user progress and adaptability. Tibby will recommend topics and quizzes tailored to the learner’s strengths and weaknesses.
+- World Ranking System: Maintaining a global leaderboard where users can track their rank and compete with learners worldwide.
+- Enhancing the quiz system with different types of questions (multiple choice, true/false, numerical etc.).
+- Broad Audience Reach: Tibby’s Classroom will expand to serve anyone interested in learning any topic, from students to professionals seeking to enhance their knowledge and skills.
 
 ## Team Memebers:
 1. Prakrititz Borah  Prakrititz.Borah@iiitb.ac.in
