@@ -10,7 +10,6 @@ Welcome to **Tibby's Classroom**, a submission for the **Python + GEN AI Hackath
 
 - **Visual Summaries**: Enter a topic, and Tibby generates a visual summary complete with images. Tibby also adapts its expressions based on the image content to create a more engaging interaction.
 - **PDF Summarization**: Upload a PDF file, and Tibby will extract key points and create concise summaries.
-- **Mind Maps**: Tibby can generate mind maps from a given topic, helping learners break down and visualize information.
 - **Quiz Generation**: Based on the input topic, Tibby creates quizzes to test knowledge and reinforce learning.
 - **User-Friendly Interaction**: Tibby’s friendly persona and changing expressions make the learning process more engaging.
 
